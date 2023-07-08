@@ -1,15 +1,16 @@
-package converters;
+package app.converters;
 
-import dto.OrderDTO;
-import entity.Order;
+import app.dto.OrderDTO;
+import app.entity.Order;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+@Component
 public class OrderConverter {
     public List<String> DtoToJSON (List<Order> orderList) {
         List<OrderDTO> orderDTOList = entityToDto(orderList);
@@ -31,5 +32,4 @@ public class OrderConverter {
         }
         return orderDTOList;
     }
-
 }

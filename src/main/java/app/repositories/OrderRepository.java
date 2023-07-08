@@ -1,14 +1,15 @@
-package repositories;
+package app.repositories;
 
-import entity.Order;
+import app.entity.Order;
 import jakarta.transaction.Transactional;
-import services.ConnectionToDB;
+import org.springframework.stereotype.Component;
+import app.services.ConnectionToDB;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+@Component
 public class OrderRepository {
 
     @Transactional
@@ -45,7 +46,6 @@ public class OrderRepository {
         ConnectionToDB connectionToDB = new ConnectionToDB();
         connectionToDB.connect(String.valueOf(statement), "insert");
     }
-
 
     private String createStatementForAddingOrder(Order order) {
         StringBuilder statementStr = new StringBuilder();

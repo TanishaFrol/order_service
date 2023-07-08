@@ -1,21 +1,22 @@
+package app;
 
-import controllers.OrderController;
-import entity.Order;
-import repositories.OrderRepository;
-
+import app.controllers.OrderController;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import java.sql.*;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class JDBCtest {
 
     public static void main(String[] args) throws InterruptedException {
-        OrderController orderController = new OrderController();
-        OrderRepository orderRepository = new OrderRepository();
-        System.out.println(orderController.getOrderList());
-        orderRepository.deleteOrder();
-        //orderRepository.addOrder(new Order(9L, 11, "Pride and Prejudice", "19:30", 57));
-        System.out.println(orderController.getOrderList());
+
+        ConfigurableApplicationContext context = new AnnotationConfigApplicationContext("app");
+        OrderController orderController = context.getBean(OrderController.class);
+        System.out.println(orderController.getOrderListTest());
+        String[] beanDefinitionNames = context.getBeanDefinitionNames();
+        Arrays.stream(beanDefinitionNames).forEach(System.out::println);
 
         //testConnection();
 

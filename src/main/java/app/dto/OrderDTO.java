@@ -1,6 +1,6 @@
-package dto;
+package app.dto;
 
-import entity.Order;
+import app.entity.Order;
 import lombok.Data;
 
 @Data
