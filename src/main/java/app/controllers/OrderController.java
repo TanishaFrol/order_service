@@ -4,10 +4,15 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.context.annotation.Scope;
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import app.services.OrderService;
+
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -24,11 +29,12 @@ public class OrderController {
         System.out.println("Создается бин класса OrderController");
     }
 
-    @GetMapping
+    @GetMapping("")
     @ResponseBody
     public String getOrderList() {
         return orderService.getOrderList().toString();
     }
+
     public List<String> getOrderListTest() {
         return orderService.getOrderList();
     }
